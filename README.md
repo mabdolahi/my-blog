@@ -1,6 +1,10 @@
 # my-blog
 simple blog site with class comment
 
-to run the server on windows:
-cd blog/my_env/scripts
+to start project:
+python -m venv myenv
+cd myenv/scripts 
 type 'activate'
+
+then cd my_site 
+python manage.py runserver
