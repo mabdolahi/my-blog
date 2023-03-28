@@ -1,0 +1,14 @@
+{% extends 'blog/parent/base.html' %}
+{% load static %}
+{% block title %} list {% endblock %}
+{% block head %} <link rel="stylesheet" type="text/css" href="{% static 'css/list.css' %}"> {% endblock %}
+
+{%block content %}
+<h1 class="test">لیست پست ها</h1>
+{% for post in posts %}
+  <a href="{{post.get_absolute_url}}">
+    <h2>{{post.author}} : {{post.title}}</h2>
+  </a>
+{% endfor %}
+
+{% endblock %}

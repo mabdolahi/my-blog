@@ -1,0 +1,48 @@
+{% extends 'blog/parent/base.html' %} {% block content %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 card mb-4  mt-3 left  top">
+      <div class="card-body">
+        <center><h2>{% block title %} {{ post.title }} {% endblock title %}</h1></center>
+        <center><h2 class=" text-muted">نویسنده : {{ post.author }}</h2></center>
+        <center><h2 class="text-muted"> متن پست : {{post.body}}</h2></center>
+        <p class="card-text ">{{ post.content | safe }}</p>
+      </div>
+    </div>
+
+
+    <div class="col-md-8 card mb-4  mt-3 ">
+      <div class="card-body">
+        <!-- comments -->
+        <h2 >{{ comments.count }} کامنت ها</h2>
+        {% for comment in comments %}
+        <div class="comments" style="padding: 10px;">
+          <h3 class="font-weight-bold">
+            {{ comment.name }}
+          </h3>
+          {{ comment.body | linebreaks }}
+        </div>
+        {% endfor %}
+
+      </div>
+    </div>
+    <div class="col-md-8 card mb-4  mt-3 ">
+      <div class="card-body">
+        {% if new_comment %}
+        <div class="alert alert-success" role="alert">
+          کامنت شما به ادمین ارسال شد
+        </div>
+        {% else %}
+        <h3>کامنت بگذارید:</h3>
+        <form method="post" style="margin-top: 1.3em;">
+          {{ comment_form.as_p }}
+          {% csrf_token %}
+          <button type="submit" class="btn btn-primary  btn-lg">ثبت</button>
+        </form>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}

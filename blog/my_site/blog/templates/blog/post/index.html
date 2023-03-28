@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <title>{% block title %} {% endblock %}</title>
+    </head>
+{% load static %}
+{% block head %}<link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">{% endblock %}
+{%block content %}
+    <h1>
+        لیست پست ها
+    </h1>
+
+    <a href= "postlist">
+        <img src="{% static 'images/list/clickhere.png' %}" width="300" height="220">
+    </a>
+    <h1>
+        فرم اطلاعات شخصی
+    </h1>
+    <a href= "account-form">
+        <img src="{% static 'images/list/clickhere.png' %}" width="300" height="220">
+    </a>
+    <h1>
+        ثبت نام
+    </h1>
+
+    <a href= "signup">
+        <img src="{% static 'images/list/clickhere.png' %}" width="300" height="220">
+    </a>
+{% endblock %}
+</html>

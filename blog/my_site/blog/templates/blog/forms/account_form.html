@@ -1,0 +1,52 @@
+{% extends 'blog/parent/base.html' %}
+{% block content %}
+<h1 style="..."> فرم اطلاعات شخصی {{account.user.first_name}}</h1>
+    <form method="post">
+    {% csrf_token %}
+    نام:
+        <input type="text" name="name" required {% if form.name.value %} value="{{form.name.value}}"
+        {% else %} value="{{account.user.first_name|default:''}}" {% endif %}>
+    <br>
+    نام خانوادگی:
+        <input type="text" name="last_name" required {% if form.last_name.value %} value="{{form.last_name.value}}"
+        {% else %} value="{{account.user.last_name|default:''}}" {% endif %}>
+    <br>
+    سن:
+        <input type="number" name="age" required {% if form.age.value %} value="{{form.age.value}}"
+        {% else %} value="{{account.age|default:''}}" {% endif %}>
+    <br>
+    شماره همراه:
+        <input name="phone" type="text" value="{{account.phone|default:''}}">
+    <br>
+    جنسیت:
+        <input type = "radio"  name = "gender" value="آقا" {%if account.gender == "آقا"%} checked {%endif%}>
+        آقا
+        <input type = "radio"  name = "gender" value="gender" {%if account.gender == "خانم"%} checked {%endif%}>
+        خانم
+    <br>
+    آدرس:
+        <textarea name="address" required>{% if form.address.value %}{{ form.address.value}}{% else %}{{account.address|default:''}}{% endif %}
+        </textarea>
+    <br></br>
+    <input type="submit" value="ثبت">
+    </form>
+
+    {% if form.errors %}
+        لطفا خطا های زیر را اصلاح کنید
+        <br>
+        {% for field in form %}
+            {% if field.errors %}
+                {% for error in field.errors%}
+
+                    {{ field.label}} : {{ error }}
+                {% endfor %}
+            {% endif %}
+        {% endfor %}
+
+        {% if form.non_field_errors %}
+
+            {{ form.non_field_errors }}
+        {% endif %}
+    {% endif %}
+
+{% endblock %}
