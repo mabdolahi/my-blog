@@ -1,10 +1,34 @@
 # my-blog
-simple blog site with class comment
+Simple blog site with class comment
 
-to start project:
+To start project:
+
+
+WINDOWS:
+
+pip install virtualenv
+
 python -m venv myenv
-cd myenv/scripts 
+
+cd myenv/scripts
+
 type 'activate'
 
-then cd my_site 
+cd my_site
+
 python manage.py runserver
+
+
+
+MAC:
+
+$ pip3 install virtualenv
+
+$ virtualenv venv
+
+$ source venv/bin/activate
+
+cd my_site
+
+python manage.py runserver
+
