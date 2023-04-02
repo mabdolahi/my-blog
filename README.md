@@ -5,11 +5,12 @@ To start project:
 
 
 WINDOWS:
-
+```bash
 pip install virtualenv
-
+```
+```bash
 python -m venv myenv
-
+```
 cd myenv/scripts
 
 type 'activate'
